@@ -1,11 +1,25 @@
 #include <iostream>
 #include <vector>
 
-using std::vector;
+using namespace std;
 
 vector<int> optimal_summands(int n) {
   vector<int> summands;
-  //write your code here
+  int total=n;
+  int i=0;
+  if(n<=0)
+	return summands;
+
+  while(total>0)
+  {
+    if(total >= (2*i+3)){
+		summands.push_back(i+1);
+	}
+    else{
+		summands.push_back(total);
+	}    total=total-summands[i];
+    i++;
+  }
   return summands;
 }
 
@@ -17,4 +31,5 @@ int main() {
   for (size_t i = 0; i < summands.size(); ++i) {
     std::cout << summands[i] << ' ';
   }
+  
 }
